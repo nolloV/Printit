@@ -22,7 +22,6 @@ for (let i = 0; i < slides.length; i++) {
 }
 
 //Bullets Points//
-// dot.classList.remove("dot_selected")
 function createDot() {
   let dots = document.querySelector(".dots");
   for (x = 0; x < slides.length; x++) {
@@ -39,38 +38,28 @@ createDot();
 
 //Arrows//
 let index = 0;
-const bulletList = document.querySelector(".dots");
 const img = document.querySelector(".banner-img");
 const tagLine = document.querySelector("#banner p");
+const bulletList = document.querySelector(".dots");
 const carouselItems = bulletList.querySelectorAll(".dots div");
 
 let arrowLeft = document.querySelector("#banner .arrow_left");
 arrowLeft.addEventListener("click", () => {
   console.log("Vous avez cliqué sur le bouton gauche");
-
   carouselItems[index].classList.remove("dot_selected");
-
   index--;
   if (index < 0) {
     index = carouselItems.length - 1;
   }
   carouselItems[index].classList.add("dot_selected");
-
   img.src = "./assets/images/slideshow/" + slides[index].image;
   tagLine.innerHTML = slides[index].tagLine;
-  // const selectedBullet = bulletList.querySelector(".dot_selected");
-  // if (selectedBullet && selectedBullet.previousElementSibling) {
-  //   const previousBullet = selectedBullet.previousElementSibling;
-  //   bulletList.insertBefore(selectedBullet, previousBullet);
-  // }
 });
 
 let arrowRight = document.querySelector("#banner .arrow_right");
 arrowRight.addEventListener("click", () => {
   console.log("Vous avez cliqué sur la flêche droite");
-
   carouselItems[index].classList.remove("dot_selected");
-
   index++;
   if (index >= carouselItems.length) {
     index = 0;
@@ -78,10 +67,4 @@ arrowRight.addEventListener("click", () => {
   carouselItems[index].classList.add("dot_selected");
   img.src = "./assets/images/slideshow/" + slides[index].image;
   tagLine.innerHTML = slides[index].tagLine;
-
-  // const selectedBullet = bulletList.querySelector(".dot_selected");
-  // if (selectedBullet && selectedBullet.nextElementSibling) {
-  //   const nextBullet = selectedBullet.nextElementSibling;
-  //   bulletList.insertBefore(nextBullet, selectedBullet);
-  // }
 });
