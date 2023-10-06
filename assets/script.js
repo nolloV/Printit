@@ -36,35 +36,36 @@ function createDot() {
 }
 createDot();
 
-//Arrows//
+function carousel(sens) {
+  selectedDot[index].classList.remove("dot_selected");
+  if (sens == 1) {
+    index++;
+    if (index >= slides.length) {
+      index = 0;
+    }
+  } else {
+    index--;
+    if (index < 0) {
+      index = slides.length - 1;
+    }
+  }
+  selectedDot[index].classList.add("dot_selected");
+  img.src = "./assets/images/slideshow/" + slides[index].image;
+  tagLine.innerHTML = slides[index].tagLine;
+}
+//Arrows Carousel//
 let index = 0;
 const img = document.querySelector(".banner-img");
 const tagLine = document.querySelector("#banner p");
-const bulletList = document.querySelector(".dots");
-const carouselItems = bulletList.querySelectorAll(".dots div");
+const selectedDot = document.querySelectorAll(".dots div");
 
 let arrowLeft = document.querySelector("#banner .arrow_left");
 arrowLeft.addEventListener("click", () => {
   console.log("Vous avez cliqué sur le bouton gauche");
-  carouselItems[index].classList.remove("dot_selected");
-  index--;
-  if (index < 0) {
-    index = carouselItems.length - 1;
-  }
-  carouselItems[index].classList.add("dot_selected");
-  img.src = "./assets/images/slideshow/" + slides[index].image;
-  tagLine.innerHTML = slides[index].tagLine;
+  carousel(-1);
 });
 
 let arrowRight = document.querySelector("#banner .arrow_right");
 arrowRight.addEventListener("click", () => {
-  console.log("Vous avez cliqué sur la flêche droite");
-  carouselItems[index].classList.remove("dot_selected");
-  index++;
-  if (index >= carouselItems.length) {
-    index = 0;
-  }
-  carouselItems[index].classList.add("dot_selected");
-  img.src = "./assets/images/slideshow/" + slides[index].image;
-  tagLine.innerHTML = slides[index].tagLine;
+  carousel(1);
 });
