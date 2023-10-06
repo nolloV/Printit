@@ -36,6 +36,12 @@ function createDot() {
 }
 createDot();
 
+// Carousel //
+let index = 0;
+const img = document.querySelector(".banner-img");
+const tagLine = document.querySelector("#banner p");
+const selectedDot = document.querySelectorAll(".dots div");
+
 function carousel(sens) {
   selectedDot[index].classList.remove("dot_selected");
   if (sens == 1) {
@@ -53,12 +59,7 @@ function carousel(sens) {
   img.src = "./assets/images/slideshow/" + slides[index].image;
   tagLine.innerHTML = slides[index].tagLine;
 }
-//Arrows Carousel//
-let index = 0;
-const img = document.querySelector(".banner-img");
-const tagLine = document.querySelector("#banner p");
-const selectedDot = document.querySelectorAll(".dots div");
-
+//Arrows//
 let arrowLeft = document.querySelector("#banner .arrow_left");
 arrowLeft.addEventListener("click", () => {
   console.log("Vous avez cliqué sur le bouton gauche");
@@ -67,5 +68,6 @@ arrowLeft.addEventListener("click", () => {
 
 let arrowRight = document.querySelector("#banner .arrow_right");
 arrowRight.addEventListener("click", () => {
+  console.log("Vous avez cliqué sur le bouton droit");
   carousel(1);
 });
